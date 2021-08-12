@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('') {
       steps {
-        git(url: 'https://github.com/oren101/NodeJS-EmptySiteTemplate.git', branch: 'master')
+        git(url: 'https://github.com/oren101/NodeJS-EmptySiteTemplate.git', branch: 'master', changelog: true, poll: true)
       }
     }
 

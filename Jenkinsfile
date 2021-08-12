@@ -15,13 +15,14 @@ pipeline {
 
     stage('Test Code') {
       steps {
-        sh '''node server.js &
-sleep 5 &&
-curl localhost:8088
-if [[ "$?" == "0" ]];
-then echo good;
-else exit 1;
-fi
+        sh '''
+
+printf "Waiting for $HOST:$PORT"
+until nc -z $localhost $8088 2>/dev/null; do
+    printf \'.\'
+    sleep 10
+done
+echo "up!"
 '''
       }
     }

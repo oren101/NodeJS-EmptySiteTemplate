@@ -15,9 +15,7 @@ pipeline {
 
     stage('Test Code') {
       steps {
-        sh '''
-
-printf "Waiting for $HOST:$PORT"
+        sh '''node server.js & printf "Waiting for $localhost:$8088"
 until nc -z $localhost $8088 2>/dev/null; do
     printf \'.\'
     sleep 10

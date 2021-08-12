@@ -18,7 +18,7 @@ pipeline {
         sh '''node server.js &
 sleep 5 &&
 curl localhost:8088
-if [[ `$?` == "0" ]];
+if [[ "$?" == "0" ]];
 then echo good;
 else exit 1;
 fi
